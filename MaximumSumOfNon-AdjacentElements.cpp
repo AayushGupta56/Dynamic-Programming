@@ -14,3 +14,20 @@ int maximumNonAdjacentSum(vector<int> &nums){
     int n=nums.size(); vector<int> dp(n,-1);
     return solve(n-1,nums,dp);
 }
+////////////tabulation///////////
+#include<bits/stdc++.h>
+ 
+int maximumNonAdjacentSum(vector<int> &nums){
+    // Write your code here.
+    int n=nums.size(); vector<int> dp(n,-1);
+    dp[0]=nums[0];
+    for(int i=1;i<n;i++){
+        int a=nums[i];int b=INT_MIN;
+        if(i>1){
+           a+= dp[i-2]; 
+        }
+        b=dp[i-1];
+        dp[i]=max(a,b);
+    }
+    return dp[n-1];
+}
