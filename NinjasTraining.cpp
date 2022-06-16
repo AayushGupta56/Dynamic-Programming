@@ -1,27 +1,27 @@
 #include<bits/stdc++.h>
-int solve(int n,int last,vector<vector<int>>&points,vector<vector<int>>&dp)  { 
-       if(dp[n][last]!=-1)return dp[n][last];
-    if(n==0){
+int solve(int day,int last,vector<vector<int>>&points,vector<vector<int>>&dp)  { 
+       if(dp[day][last]!=-1)return dp[day][last];
+    if(day==0){
              int ans=0;
        for(int i=0;i<=2;i++){
            if(i!=last){
                ans=max(ans,points[0][i]);
            }
        }
-              return dp[n][last]=ans;
+              return dp[day][last]=ans;
         
-       
+        
    }
    
     int ans=0;
     for(int i=0;i<=2;i++){
-       
+       //doing work which are valid
         if(i!=last){
-            ans=max(ans,points[n][i]+solve(n-1,i,points,dp));
+            ans=max(ans,points[day][i]+solve(day-1,i,points,dp));
         }
         
     }
-      return dp[n][last]=ans;
+      return dp[day][last]=ans;
    
 
 }
