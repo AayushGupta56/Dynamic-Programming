@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 int solve(int day,int last,vector<vector<int>>&points,vector<vector<int>>&dp)  { 
-       if(dp[day][last]!=-1)return dp[day][last];
+       if(dp[day][last]!=-1)return dp[day][last];//this should be written first as  if day==0 and it is written later then 
+       //it will go in day==0 ans it will calculate again
     if(day==0){
              int ans=0;
        for(int i=0;i<=2;i++){
