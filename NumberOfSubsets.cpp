@@ -25,9 +25,9 @@ int findWays(vector<int> &arr, int k)
      for(int i=0;i<n;i++)dp[i][0]=1;
     if(arr[0]<=k)
     dp[0][arr[0]]=1;
-    
+ 
     for(int i=1;i<n;i++){
-        for(int target=1;target<k+1;target++){
+        for(int target=0;target<k+1;target++){
             
             int pick=0; int  notpick=dp[i-1][target];
             if(arr[i]<=target)pick=dp[i-1][target-arr[i]];
