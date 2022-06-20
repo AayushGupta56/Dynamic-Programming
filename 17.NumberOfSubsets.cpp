@@ -16,26 +16,27 @@ int solve(int i,int k,vector<int>&arr,vector<vector<int >>&dp){
 }
 int findWays(vector<int> &arr, int k)
 {  int n=arr.size();
+ 
     // Write your code here.
-    vector<vector<int >>dp(n,vector<int>(k+1,-1)); //for recursion
+  //  vector<vector<int >>dp(n,vector<int>(k+1,-1)); //for recursion
    
-    return solve(n-1,k,arr,dp);
- ///always use recursion///
- ////tabulation/////
- //vector<vector<int >>dp(n,vector<int>(k+1,0));
-//      for(int i=0;i<n;i++)dp[i][0]=1;
-//     if(arr[0]<=k)
-//     dp[0][arr[0]]=1;
+   // return solve(n-1,k,arr,dp);
+
+ vector<vector<int >>dp(n,vector<int>(k+1,0));
+if(arr[0]==0)dp[0][0]=2;
+  else dp[0][0]=1;
+    if(arr[0]!=0&&arr[0]<=k)
+    dp[0][arr[0]]=1;
     
-//     for(int i=1;i<n;i++){
-//         for(int target=0;target<k+1;target++){
+    for(int i=1;i<n;i++){
+        for(int target=0;target<k+1;target++){
             
-//             int pick=0; int  notpick=dp[i-1][target];
-//             if(arr[i]<=target)pick=dp[i-1][target-arr[i]];
+            int pick=0; int  notpick=dp[i-1][target];
+            if(arr[i]<=target)pick=dp[i-1][target-arr[i]];
           
-//             dp[i][target]=pick+notpick;
+            dp[i][target]=pick+notpick;
             
-//         }
-//     }
-//    return dp[n-1][k]; 
+        }
+    }
+   return dp[n-1][k]; 
 } 
