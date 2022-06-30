@@ -10,11 +10,11 @@ int solve(int i,int j,string &s1,string &s2,vector<vector<int>>&dp){
         return dp[i][j]=solve(i-1,j-1,s1,s2,dp);
     }
     else {
-        //for erasing
+        //if  erasing ith character then we have to move to i-1 to search for s2[j]
         int a=1+solve(i-1,j,s1,s2,dp);
-        //for inserting
+        //if inserting jth charcter then we have to go search for j-1th character
         int b=1+solve(i,j-1,s1,s2,dp);
-        //for replacing
+        //if we replace then ith charcter is gone as well as jth character is gone so we start searching for j-1th char at i-th index
         int c=1+solve(i-1,j-1,s1,s2,dp);
         
         return dp[i][j]=min(a,min(b,c));
@@ -37,11 +37,11 @@ int editDistance(string s1, string s2)
          dp[i][j]=dp[i-1][j-1];
             }
          else {
-        //for erasing
+          //if  erasing ith character then we have to move to i-1 to search for s2[j]
         int a=1+dp[i-1][j];
-        //for inserting
+        //if inserting jth charcter then we have to go search for j-1th character
         int b=1+dp[i][j-1];
-        //for replacing
+       //if we replace then ith charcter is gone as well as jth character is gone so we start searching for j-1th char at i-th index
         int c=1+dp[i-1][j-1];
         
         dp[i][j]=min(a,min(b,c));
