@@ -7,9 +7,11 @@ int solve(int i,int j,string&s1,string &s2,vector<vector<int>>&dp){
     
     if(dp[i][j]!=-1)return dp[i][j];
     if(s1[i-1]==s2[j-1]){
+           //once taking ith position and once not taking ith positon if string characters matches
         return dp[i][j]=solve(i-1,j-1,s1,s2,dp)+solve(i-1,j,s1,s2,dp);
     }
     else{
+        //no option we have to shift i-1th position to search for jth character  
         return dp[i][j]=solve(i-1,j,s1,s2,dp);
     }
 }
@@ -32,11 +34,11 @@ int subsequenceCounting(string &s1, string &s2, int s1size, int s2size) {
     for(int i=1;i<=n;i++){
     for(int j=1;j<=m;j++){
      if(s1[i-1]==s2[j-1]){
-         //once taking ith position and once not taking ith positon
+         //once taking ith position and once not taking ith positon if string characters matches
          dp[i][j]=((dp[i-1][j-1]%mod)+(dp[i-1][j]%mod))%mod;
     }
      else{
-         //no option we have to shift ith position
+         //no option we have to shift i-1th position to search for jth character
          dp[i][j]=dp[i-1][j];
     }
   
