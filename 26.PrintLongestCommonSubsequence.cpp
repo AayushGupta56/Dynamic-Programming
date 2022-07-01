@@ -1,6 +1,22 @@
+#include<bits/stdc++.h>
+int solve(string&s,string&t,int n,int m, vector<vector<int>>&dp){
+    
+     if(n==0||m==0){
+         return 0;
+     } 
+    if(dp[n][m]!=-1)return dp[n][m];
+    if(s[n-1]==t[m-1]){
+         dp[n][m]=1+solve(s,t,n-1,m-1,dp);
+    }
+    else{
+        int a= solve(s,t,n,m-1,dp);//moving index of only 2nd string
+        int b=solve(s,t,n-1,m,dp);//moving index of 1st string
+        return dp[n][m]=max(a,b);
+    }
+}
 int lcs(string s, string t)
 {
-    //Write your code here
+	//Write your code here
      int n=s.size();int m=t.size();
 //     vector<vector<int>>dp(n+1,vector<int>(m+1,-1));//recursion
 //     return solve(s,t,n,m,dp);//recursion
@@ -21,27 +37,27 @@ int lcs(string s, string t)
             }  
         }  
     }
-    
-    
-           return dp[n][m];//return the length of coomon subsequence
-    ///for returning the common subsequence
-
-    int len=dp[n][m];
-    int index=len-1;
-    string ans(len,'a');
-    int i=n;int j=m;
-    while(i>0&&j>0){
-        if(ans[i-1]==ans[j-1]){
-            ans[index]=ans[i-1];index--;
-          i=i-1;j=j-1;
-        }
-        else if(dp[i][j-1]>dp[i-1][j]){
-            j=j-1;
-        }
-        else{
-            i=i-1;
-        }
-    }
-    for(int i=0;i<len;i++)cout<<s[i];
+     ///for returning the common subsequence
+//     int len=dp[n][m];
+//     int index=len-1;
+//     string ans(len,'a');
+//     int i=n;int j=m;
+//     while(i>0&&j>0){
+//         if(s[i-1]==t[j-1]){
+//             ans[index]=s[i-1];index--;
+//           i=i-1;j=j-1;
+//         }
+//         else if(dp[i][j-1]>dp[i-1][j]){
+//             j=j-1;
+//         }
+//         else{
+//             i=i-1;
+//         }
+//     }
+//     for(int i=0;i<len;i++)cout<<ans[i];  
   
+    
+           return dp[n][m];//return the length of common subsequence
+ 
+
 }
