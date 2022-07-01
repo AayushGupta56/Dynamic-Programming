@@ -6,7 +6,7 @@ int solve(string&s,string&t,int n,int m, vector<vector<int>>&dp){
      } 
     if(dp[n][m]!=-1)return dp[n][m];
     if(s[n-1]==t[m-1]){
-         dp[n][m]=1+solve(s,t,n-1,m-1,dp);
+       return  dp[n][m]=1+solve(s,t,n-1,m-1,dp);
     }
     else{
         int a= solve(s,t,n,m-1,dp);//moving index of only 2nd string
