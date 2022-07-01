@@ -1,9 +1,11 @@
 int solve(int i,int j,string &s1,string &s2,vector<vector<int>>&dp){
     if(i==0){
-        return j;
+   return j;//if ith string i.e if s1 is exhausted(i==0) then to make s1 to s2 we will insert 
+        //the left charcters of s2 in s1 which will be j as j characters are left 
     }
     if(j==0){
-        return i;
+        return i;//if jth i.e if s2 is exhausted(j==0) then to make s1 to s2 we will delete 
+        //all the left characters of s1 so it will become s2
     }
     if(dp[i][j]!=-1)return dp[i][j];
     if(s1[i-1]==s2[j-1]){
@@ -29,8 +31,10 @@ int editDistance(string s1, string s2)
   // return solve(n,m,s1,s2,dp);//for recursion
     
     vector<vector<int>>dp(n+1,vector<int>(m+1,0));
-    for(int i=0;i<=n;i++)dp[i][0]=i;////////////////
-    for(int  j=0;j<=m;j++)dp[0][j]=j;//////////////
+    for(int i=0;i<=n;i++)dp[i][0]=i;/////if ith string i.e if s1 is exhausted(i==0) then to make s1 to s2 we will insert 
+    //the left charcters of s2 in s1 which will be j as j characters are left 
+    for(int  j=0;j<=m;j++)dp[0][j]=j;////if jth i.e if s2 is exhausted(j==0) then to make s1 to s2 we will delete all the 
+    //left characters of s1 so it will become s2
     for(int i=1;i<=n;i++){
         for(int j=1;j<=m;j++){
              if(s1[i-1]==s2[j-1]){
