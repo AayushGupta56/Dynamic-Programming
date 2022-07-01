@@ -8,7 +8,7 @@ int solve(vector<int>&arr,int x,int n,vector<vector<int>>&dp){
     }
     if(dp[n][x]!=-1)return dp[n][x];
     int pick=1e9;
-    if(arr[n]<=x)pick=1+solve(arr,x-arr[n],n,dp);
+    if(arr[n]<=x)pick=1+solve(arr,x-arr[n],n,dp);//we can pick this coin again so we put n not n-1
     int notpick=0+solve(arr,x,n-1,dp);
 return dp[n][x]=min(pick,notpick);
    // return pick+notpick;
