@@ -37,18 +37,14 @@ int lcs(string s, string t)
             }  
         }  
     }
-    
-    
-           return dp[n][m];//return the length of coomon subsequence
-    ///for returning the common subsequence
-
+     ///for returning the common subsequence
 //     int len=dp[n][m];
 //     int index=len-1;
 //     string ans(len,'a');
 //     int i=n;int j=m;
 //     while(i>0&&j>0){
-//         if(ans[i-1]==ans[j-1]){
-//             ans[index]=ans[i-1];index--;
+//         if(s[i-1]==t[j-1]){
+//             ans[index]=s[i-1];index--;
 //           i=i-1;j=j-1;
 //         }
 //         else if(dp[i][j-1]>dp[i-1][j]){
@@ -58,6 +54,10 @@ int lcs(string s, string t)
 //             i=i-1;
 //         }
 //     }
-//     for(int i=0;i<len;i++)cout<<s[i];
+//     for(int i=0;i<len;i++)cout<<ans[i];  
   
+    
+           return dp[n][m];//return the length of common subsequence
+ 
+
 }
