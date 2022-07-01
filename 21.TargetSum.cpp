@@ -20,9 +20,13 @@ int targetSum(int n, int d, vector<int>& arr) {
   //int s1;int s2=total-s1;
     //s1-s2=d;
     //s1-total+s1=d;
-   int s1=(total-d)/2;
+   
+   
     if(total-d<0)return 0;
     if((total-d)%2)return 0;
+    int s1;
+     if(d>=0)s1=(total-d)/2;
+    else s1=(total+d)/2;
     vector<vector<int >>dp(n,vector<int>(total,-1)); //for recursion
   
     return solve(n-1,s1,arr,dp);
