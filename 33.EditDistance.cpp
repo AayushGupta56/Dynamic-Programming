@@ -9,7 +9,7 @@ int solve(int i,int j,string &s1,string &s2,vector<vector<int>>&dp){
     }
     if(dp[i][j]!=-1)return dp[i][j];
     if(s1[i-1]==s2[j-1]){
-        return dp[i][j]=solve(i-1,j-1,s1,s2,dp);
+        return dp[i][j]=0+solve(i-1,j-1,s1,s2,dp);//because we don't have to do any work as they are already matching
     }
     else {
         //if  erasing ith character then we have to move to i-1 to search for s2[j]
@@ -38,7 +38,7 @@ int editDistance(string s1, string s2)
     for(int i=1;i<=n;i++){
         for(int j=1;j<=m;j++){
              if(s1[i-1]==s2[j-1]){
-         dp[i][j]=dp[i-1][j-1];
+         dp[i][j]=dp[i-1][j-1];//because we don't have to do any work as they are already matching
             }
          else {
           //if  erasing ith character then we have to move to i-1 to search for s2[j]
